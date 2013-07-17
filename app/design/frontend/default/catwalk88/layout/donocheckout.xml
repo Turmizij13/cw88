@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+<checkout_cart_ajaxviewcart>
+	<reference name="content">
+            <block type="checkout/cart" name="checkout.cart">
+                <action method="setCartTemplate"><value>checkout/ajax/cart.phtml</value></action>
+                <action method="setEmptyTemplate"><value>checkout/ajax/cart/noItems.phtml</value></action>
+                <action method="chooseTemplate"/>
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/ajax/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/ajax/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/ajax/cart/item/default.phtml</template></action>
+                <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/ajax/cart/totals.phtml"/>
+            </block>
+     </reference>
+</checkout_cart_ajaxviewcart>
+</layout>

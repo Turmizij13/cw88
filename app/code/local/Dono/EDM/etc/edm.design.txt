@@ -1,0 +1,6 @@
+emd
+  edm group()
+  edm customer -> edm group
+  edm template (template_id,template_name,template_dir)
+  edm task list ->(group,template,time)
+  

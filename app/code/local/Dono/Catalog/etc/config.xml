@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Dono_Catalog>
+            <version>1.0.0</version>
+        </Dono_Catalog>
+	</modules>
+	<global>
+		<blocks>
+            <donocatalog>
+                <class>Dono_Catalog_Block</class>
+            </donocatalog>
+        </blocks>
+        <models>
+			<donocatalog>
+				<class>Dono_Catalog_Model</class>
+			</donocatalog>
+		</models>
+        <resources>
+    		<donocatalog_setup>
+      			<setup>
+        			<module>Dono_Catalog</module>
+        			<class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+      			</setup>
+      			<connection>
+        			<use>core_setup</use>
+      			</connection>
+    		</donocatalog_setup>
+    		<donocatalog_write>
+      			<connection>
+        			<use>core_write</use>
+      			</connection>
+    		</donocatalog_write>
+			<donocatalog_read>
+      			<connection>
+        			<use>core_read</use>
+      			</connection>
+    		</donocatalog_read>
+		</resources>
+	</global>
+</config>

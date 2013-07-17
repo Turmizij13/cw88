@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<edm translate="title" module="edm">
+			<title>EDM</title>
+			<sort_order>30</sort_order>
+			<!--action>adminhtml/catalog</action -->
+			<depends>
+				<module>Dono_EDM</module>
+			</depends>
+			<children>
+				<edm_task module="edm">
+					<title>Manage EDM Task</title>
+					<sort_order>2</sort_order>
+					<action>adminhtml/edm_task/index</action>
+				</edm_task>
+				<edm_group module="edm">
+					<title>Manage EDM Groups</title>
+					<sort_order>3</sort_order>
+					<action>adminhtml/edm_group/index</action>
+				</edm_group>
+				<edm_customer module="edm">
+					<title>Manage EDM Customer</title>
+					<sort_order>3</sort_order>
+					<action>adminhtml/edm_customer/index</action>
+				</edm_customer>
+				<edm_template module="edm">
+					<title>Manage EDM Templates</title>
+					<sort_order>4</sort_order>
+					<action>adminhtml/edm_template/index</action>
+				</edm_template>
+			</children>
+		</edm>
+	</menu>
+
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<edm_options translate="title" module="edm"> 
+										<title>EDM Section</title>
+									</edm_options>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

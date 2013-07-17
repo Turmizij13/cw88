@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="before_body_end">
+    		<block type="connector/connector" name="seevolution.connector.connector" alias="seevolutionconnector"></block>
+	    </reference>
+	</default>
+	
+    <checkout_onepage_success translate="label">
+        <reference name="before_body_end">
+			<remove name="seevolution.connector.connector" />
+			<block type="connector/convert" name="seevolution.connector.convert"/>
+        </reference>
+    </checkout_onepage_success>
+</layout>

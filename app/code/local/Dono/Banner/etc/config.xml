@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Dono_Banner>
+            <version>1.0.0</version>
+        </Dono_Banner>
+	</modules>
+	<global>
+		<blocks>
+            <donobanner>
+                <class>Dono_Banner_Block</class>
+            </donobanner>
+        </blocks>
+        <models>
+        	<donobanner>
+                <class>Dono_Banner_Model</class>
+            </donobanner>
+        </models>
+	</global>
+	<default>
+        <design>
+            <banner_setting>
+                <baseurl>images/</baseurl>
+            </banner_setting>
+        </design>
+    </default>
+</config>

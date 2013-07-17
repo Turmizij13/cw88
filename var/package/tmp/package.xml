@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Seevolution_Connector</name>
+    <version>0.1.1</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Automatically inserts code necessary to support integration with SeeVolution.</summary>
+    <description>Automatically inserts code necessary to support integration with SeeVolution (http://www.seevolution.com).</description>
+    <notes>n/a</notes>
+    <authors><author><name>iFuel Interactive, LLC</name><user>ifuel</user><email>info@ifuelinteractive.com</email></author></authors>
+    <date>2011-07-15</date>
+    <time>20:33:52</time>
+    <contents><target name="magelocal"><dir name="Seevolution"><dir name="Connector"><dir name="Block"><file name="Connector.php" hash="220e30d732b97fc127017c2d2ed47ebd"/><file name="Convert.php" hash="9731c8f673e9181759f2567e6e925875"/></dir><dir name="Helper"><file name="Data.php" hash="901cadb173dae781f72bfbcc098f4f61"/></dir><dir name="etc"><file name="config.xml" hash="d1cb80e7844370c6e4a1815398adb4af"/><file name="system.xml" hash="c2a1a51bcc63e37f17ae08703d845871"/></dir></dir></dir></target><target name="mage"><dir name="app"><dir name="design"><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="seevolution.xml" hash="5c1638ae168b515d613d9410769b52eb"/></dir></dir></dir></dir></dir><dir name="etc"><dir name="modules"><file name="Seevolution_Connector.xml" hash="8528ec24d4467959af408aca97012492"/></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>5.3.0</max></php></required></dependencies>
+</package>

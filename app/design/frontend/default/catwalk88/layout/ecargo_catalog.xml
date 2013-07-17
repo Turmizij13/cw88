@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+<default>
+	<reference name="header">
+		<!-- <block type="cms/block" name="static_navi_block">
+				<action method="setBlockId"><block_id>LV6td0NOZpiyVlWe</block_id></action>
+		</block>
+		 -->
+		<block type="cms/block" name="static_free_newin_block">
+				<action method="setBlockId"><block_id>shCLLjEMTTcdDw33</block_id></action>
+		</block>
+		<block type="core/template" name="mini.customer.links" template="customer/mini.account.links.phtml">
+		</block>
+        <block type="directory/currency" name="currency" template="directory/currency.phtml"/>
+	</reference>
+	<reference name="footer">
+		<action method="unsetChild"><name>cms_footer_links</name></action>
+		<block type="cms/block" name="footer_static_block" before="-">
+			<action method="setBlockId"><block_id>BAPVSSH5fXzBcf39</block_id></action>
+		</block>
+	</reference>
+</default>
+<cms_index_index>
+	<reference name="head">
+		<action method="addCss"><stylesheet>css/index.css</stylesheet></action>
+		<action method="addCss"><stylesheet>css/home_page.css</stylesheet></action>
+	</reference>
+	<reference name="content">
+		<block type="cms/block" name="coupon_spend_rules">
+			<action method="setBlockId"><block_id>vCNJDzX0UfS2hhWk</block_id></action>
+		</block>
+		<block type="cms/block" name="new_banner_block">
+			<action method="setBlockId"><block_id>MiR8GSlG6CWNIsQd</block_id></action>
+		</block>
+		<block type="core/template" name="ecargocatalog.wrapper.static" template="ecargocatalog/wrapper.phtml">
+			<block type="cms/block" name="featured_static_block">
+				<action method="setParseCurrency"><parse>1</parse></action>
+				<action method="addToParentGroup"><group>wrapper_static</group></action>
+				<action method="setBlockId"><block_id>oSLGzaD12v8t0sZ7</block_id></action>
+			</block>
+			<block type="cms/block" name="new_banner_block_2">
+				<action method="setBlockId"><block_id>InOJUwSq3KkOKBLj</block_id></action>
+			</block>
+			<block type="cms/block" name="newstyles_static_block">
+				<action method="setParseCurrency"><parse>1</parse></action>
+				<action method="addToParentGroup"><group>wrapper_static</group></action>
+				<action method="setBlockId"><block_id>WBEemI4yAe5d8vSk</block_id></action>
+			</block>
+		</block>
+	</reference>
+</cms_index_index>
+<catalog_product_view>
+	<reference name="root">
+		<action method="setTemplate"><template>page/1column.phtml</template></action>
+	</reference>
+	<reference name="head">
+		<action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+		<action method="addCss"><stylesheet>css/prod_desc.css</stylesheet></action>
+		<!-- <action method="addCss"><stylesheet>css/jquery.jqzoom.css</stylesheet></action>
+		<action method="addJs"><script>jquery/jquery.jqzoom-core-pack.js</script></action>
+		 -->
+		 <action method="addJs"><script>jquery/jcarousellite.pack.js</script></action>
+	</reference>
+	<reference name="left">
+		<block type="cms/block" name="static_block_content_footer" before="-">
+                <action method="setBlockId"><block_id>dgypro1GduCI6zvT</block_id></action>
+        </block>
+        <reference name="left">
+            <block type="catalog/navigation" name="catalog.category.navigation" template="catalog/navigation/left.phtml" before="-"/>
+        </reference>
+	</reference>
+	<reference name="product.info">
+		<action method="unsetChild"><name>additional</name></action>
+		<block type="donocatalog/product_list_crosssell" name="catalog.product.list.crosssell" template="catalog/product/list/crosssell.phtml"></block>
+		<block type="core/template" name="vivian.social.share" template="catalog/product/view/social.share.phtml"></block>
+		<block type="core/template" name="vivian.free.delivery.text" template="catalog/product/view/free.delivery.text.phtml"></block>
+		<block type="core/template" name="vivian.product.page.guide" template="catalog/product/view/guide.phtml"></block>
+		<block type="catalog/product_list_related" name="catalog.product.list.related" template="catalog/product/list/related.phtml"></block>
+	</reference>
+	<reference name="product.info.additional">
+		<action method="unsetChild"><name>product_tag_list</name></action>
+	</reference>
+	<reference name="product.info.container2">
+	<action method="append"><block>catalog.product.list.related</block></action>
+	</reference>
+	<reference name="product.info.options.wrapper.bottom">
+		<action method="insert"><block>vivian.free.delivery.text</block><sibling>product.info.addtocart</sibling></action>
+		<action method="append"><block>product.info.addto</block></action>
+		<action method="append"><block>vivian.product.page.guide</block></action>
+	</reference>
+</catalog_product_view>
+<catalog_category_default translate="label">
+	<reference name="product_list_toolbar">
+		<action method="setTemplate">
+			<template>ecargocatalog/product/list/toolbar.phtml</template>
+		</action>
+	</reference>
+</catalog_category_default>
+<catalog_category_view>
+	<reference name="left">
+		<action method="unsetChild"><name>currency</name></action>
+	</reference>
+	<reference name="head">
+		<action method="addCss"><stylesheet>css/category_view.css</stylesheet></action>
+		<action method="addCss"><stylesheet>css/ui/css/ui-lightness/jquery-ui-1.10.3.custom.min.css</stylesheet></action>
+		<action method="addJs"><script>jquery/ui/js/jquery-ui-1.10.3.custom.min.js</script></action>
+	</reference>
+	<reference name="root">
+		<action method="setTemplate">
+			<template>page/2columns-left.phtml</template>
+		</action>
+	</reference>
+	<reference name="content">
+		<block type="ecargocatalog/category_featured" name="ecargo.category.featured" template="ecargocatalog/category/featured.phtml"/>
+	</reference>
+</catalog_category_view>
+<catalog_category_layered>
+	<reference name="left">
+		<action method="unsetChild"><name>currency</name></action>
+	</reference>
+	<reference name="product_list_toolbar">
+		<action method="setTemplate">
+			<template>ecargocatalog/product/list/toolbar.phtml</template>
+		</action>
+	</reference>
+	<reference name="product_list_toolbar_pager">
+		<action method="setTemplate">
+			<template>page/html/pager_new.phtml</template>
+		</action>
+	</reference>
+</catalog_category_layered>
+<checkout_cart_index>
+	<reference name="checkout.cart">
+		<block type="core/template" name="checkout.cart.cards" as="cards" template="checkout/cart/cards.phtml"/>
+	</reference>
+</checkout_cart_index>
+<catalogsearch_result_index>
+	<reference name="left">
+		<action method="unsetChild"><name>currency</name></action>
+	</reference>
+	<reference name="head">
+		<action method="addCss"><stylesheet>css/category_view.css</stylesheet></action>
+		<action method="addCss"><stylesheet>css/ui/css/ui-lightness/jquery-ui-1.10.3.custom.min.css</stylesheet></action>
+		<action method="addJs"><script>jquery/ui/js/jquery-ui-1.10.3.custom.min.js</script></action>
+	</reference>
+	<reference name="root">
+		<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+	</reference>
+	<reference name="product_list_toolbar">
+		<action method="setTemplate">
+			<template>ecargocatalog/product/list/toolbar.phtml</template>
+		</action>
+	</reference>
+	<reference name="product_list_toolbar_pager">
+		<action method="setTemplate">
+			<template>page/html/pager_new.phtml</template>
+		</action>
+	</reference>
+</catalogsearch_result_index>
+</layout>

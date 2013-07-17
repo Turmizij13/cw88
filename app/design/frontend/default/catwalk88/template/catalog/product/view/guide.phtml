@@ -1,0 +1,31 @@
+<div class="vivian-p-p-guide vivian-block">
+	<div>
+		<div class="vivian-g-size vivian-block clearfix">
+			<div class="vivian-s-t clearfix vivian-title">
+				<label><?php echo $this->__('Size Guide')?></label><s></s>
+			</div>
+			<div class="vivian-s-c">
+				Size Guide Size GuideSize GuideSize GuideSize GuideSize GuideSize GuideSize Guide
+				Size GuideSize GuideSize GuideSize GuideSize GuideSize GuideSize GuideSize Guide
+				Care GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare Guide
+			</div>
+		</div>
+		<div class="vivian-g-care vivian-block clearfix">
+			<div class="vivian-c-t clearfix vivian-title">
+				<label><?php echo $this->__('Care Guide')?></label><s></s>
+			</div>
+			<div class="vivian-c-c">
+				Care GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare Guide
+				Care GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare Guide
+				Care GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare GuideCare Guide
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	(function($){
+		$('.vivian-p-p-guide .vivian-block .vivian-title s').click(function(){
+			$(this).parent('.vivian-title').next().toggle();
+		});
+	})(jQuery);
+</script>

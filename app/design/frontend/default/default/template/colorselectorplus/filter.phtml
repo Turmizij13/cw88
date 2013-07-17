@@ -1,0 +1,7 @@
+<ol>
+	<?php foreach ($this->getTheItems() as $_item): ?>
+   		<li>
+       		<?php echo Mage::helper('colorselectorplus')->getShopByHtml($_item,true); ?>
+		</li>
+	<?php endforeach; ?>
+</ol>

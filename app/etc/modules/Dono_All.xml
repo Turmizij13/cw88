@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Dono_Catalog>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Dono_Catalog>
+		<Dono_EDM>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Dono_EDM>
+		<Dono_Banner>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Dono_Banner>
+		<Dono_Directory>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Dono_Directory>
+		<Dono_Reports>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Dono_Reports>
+		<Dono_Sales>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Dono_Sales>
+	</modules>
+</config>

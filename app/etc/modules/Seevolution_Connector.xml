@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Seevolution
+ * @package    Seevolution_Connect
+ * @author     iFuel Interactive, LLC
+ */
+ -->
+<config>
+    <modules>
+        <Seevolution_Connector>
+            <active>true</active>
+            <codePool>local</codePool>
+		</Seevolution_Connector>
+    </modules>
+</config> 

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_edm_task_index>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_task_list" name="task_list">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_edm_task_index>
+    <adminhtml_edm_customer_index>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_customer_list" name="customer_list">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_edm_customer_index>
+    <adminhtml_edm_group_index>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_group_list" name="group_list">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_edm_group_index>
+    <adminhtml_edm_template_index>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_template_list" name="template_list">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_edm_template_index>
+    <adminhtml_edm_task_edit>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_task_edit" name="edm_task_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="edm/adminhtml_edm_task_edit_tabs" name="edm_task_edit_tabs"></block>
+        </reference>
+    </adminhtml_edm_task_edit>
+    <adminhtml_edm_group_edit>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_group_edit" name="edm_group_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="edm/adminhtml_edm_group_edit_tabs" name="edm_group_edit_tabs"></block>
+        </reference>
+    </adminhtml_edm_group_edit>
+    <adminhtml_edm_customer_edit>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_customer_edit" name="edm_customer_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="edm/adminhtml_edm_customer_edit_tabs" name="edm_customer_edit_tabs"></block>
+        </reference>
+    </adminhtml_edm_customer_edit>
+    <adminhtml_edm_template_edit>
+    	<referense name="head">
+            <action method="setTitle" translate="title"><title>Dono EDM</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>edm</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="edm/adminhtml_edm_template_edit" name="edm_template_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="edm/adminhtml_edm_template_edit_tabs" name="edm_template_edit_tabs"></block>
+        </reference>
+    </adminhtml_edm_template_edit>
+</layout>

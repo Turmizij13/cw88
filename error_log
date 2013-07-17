@@ -1,0 +1,15 @@
+[26-Apr-2013 08:50:46 UTC] PHP Parse error:  syntax error, unexpected ':' in /home/bgsgloba/public_html/catwalk88/demo/app/code/community/Openstream/GeoIP/Model/Observer.php on line 13
+[26-Apr-2013 08:58:57 UTC] PHP Fatal error:  Call to undefined method Openstream_GeoIP_Model_Observer::getUrl() in /home/bgsgloba/public_html/catwalk88/demo/app/code/community/Openstream/GeoIP/Model/Observer.php on line 17
+[26-Apr-2013 08:59:29 UTC] PHP Fatal error:  Call to a member function getFrontNameByRoute() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/core/Mage/Core/Model/Url.php on line 530
+[26-Apr-2013 09:00:00 UTC] PHP Fatal error:  Call to a member function getFrontNameByRoute() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/core/Mage/Core/Controller/Varien/Front.php on line 199
+[26-Apr-2013 09:00:02 UTC] PHP Fatal error:  Call to a member function getFrontNameByRoute() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/core/Mage/Core/Controller/Varien/Front.php on line 199
+[26-Apr-2013 09:01:16 UTC] PHP Fatal error:  Call to a member function getFrontNameByRoute() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/core/Mage/Core/Model/Url.php on line 530
+[26-Apr-2013 09:10:55 UTC] PHP Fatal error:  Call to a member function getFrontNameByRoute() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/core/Mage/Core/Model/Url.php on line 530
+[26-Apr-2013 09:35:07 UTC] PHP Parse error:  syntax error, unexpected $end in /home/bgsgloba/public_html/catwalk88/demo/app/design/frontend/default/catwalk88/template/page/html/subscribe.phtml on line 2
+[06-May-2013 07:27:39 UTC] PHP Fatal error:  Call to a member function setNode() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/lib/Varien/Simplexml/Config.php on line 550
+[06-May-2013 07:30:19 UTC] PHP Fatal error:  Call to a member function setNode() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/lib/Varien/Simplexml/Config.php on line 550
+[06-May-2013 07:32:06 UTC] PHP Fatal error:  Call to a member function getFrontNameByRoute() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/core/Mage/Core/Model/Url.php on line 530
+[06-May-2013 07:36:39 UTC] PHP Fatal error:  Call to a member function getFrontNameByRoute() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/core/Mage/Core/Model/Url.php on line 530
+[06-May-2013 07:36:42 UTC] PHP Fatal error:  Call to a member function getData() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/community/Openstream/GeoIP/Model/Observer.php on line 19
+[06-May-2013 07:46:43 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/bgsgloba/public_html/catwalk88/demo/app/code/community/Openstream/GeoIP/Model/Observer.php on line 17
+[07-May-2013 02:08:18 UTC] PHP Fatal error:  Call to a member function setRedirect() on a non-object in /home/bgsgloba/public_html/catwalk88/demo/app/code/community/Openstream/GeoIP/Model/Observer.php on line 63

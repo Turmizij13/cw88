@@ -1,0 +1,44 @@
+<?php 
+	/* @var $this ECargo_Catalog_Block_Category_Featured */
+	$collection = $this->getCollection();
+?>
+<?php 
+	$_helper    = $this->helper('catalog/output');
+	$_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" /></p>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+?>
+<?php if($_imgHtml&&$this->canShowImage()):?>
+<?php echo $_imgHtml?>
+<?php endif;?>
+<div class=" vivian-featured">
+<div class="vivian-title">
+	<h2><?php echo strtoupper($_category->getName());?>
+	</h2>
+</div>
+<div class="vivian-content">
+	<?php echo($_category->getDescription());?>
+</div>
+<div class="vivian-wrapper clearfix">
+<?php foreach ($collection as $category):?>
+	<dl class="first fleft">
+		<?php if($this->canShowImage()):?>
+		<dt><a 	title="<?php echo $category->getName();?>" href="<?php echo $category->getUrl();?>"> 
+			<img width="176" height="176" alt="<?php echo $category->getName();?>"
+				src="<?php echo $this->getCategoryImagePath($category->getThumbnail())?>"> 
+			</a></dt>
+		<?php endif;?>
+		<dd>
+			<h2 class="main-category">
+				<a title="<?php echo $category->getName();?>" href="<?php echo $category->getUrl();?>">
+					<?php echo $category->getName();?>
+				</a>
+			</h2>
+		</dd>
+	</dl>
+<?php endforeach;?>
+</div>
+</div>

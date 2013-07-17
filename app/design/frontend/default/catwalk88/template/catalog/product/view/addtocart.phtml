@@ -1,0 +1,84 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */fb(get_class($this));
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+	<dl class="tb-amount clearfix add-to-cart">
+    		<dt class="tb-metatit"><?php echo $this->__('Qty') ?></dt>
+			<dd id="J_Amount">
+       		<span id="J_AmountWidget" class="tb-amount-widget">
+       			<?php if(!$_product->isGrouped()): ?>
+       				<input type="text" name="qty" maxlength="8" value="<?php echo $this->getProductDefaultQty() * 1 ?>" class="tb-text" id="J_IptAmount">
+       			<?php endif; ?>
+	    	<span class="increase"></span>
+	    	<span class="decrease"></span>
+       		</span><?php echo $this->__('Unit(s)')?>
+		</dd>
+    </dl>
+    <div class="tb-action clearfix">
+    	<div class="tb-btn-basket tb-btn-sku">
+			<a id="J_LinkBasket" target="_self" href="javascript:void(0);" onclick="productAddToCartForm.submit(this)">加入购物车<b></b></a>
+		</div>
+    	<!-- <div class="tb-btn-buy tb-btn-sku">
+				<input type="hidden" name="buynow" value="1" id="buynow" disabled="true"/>
+				<a title="<?php echo $this->__('点击此按钮，到下一步确认购买信息')?>" href="javascript:void(0)" onclick="document.getElementById('buynow').disabled=false;productAddToCartForm.submit(this)" id="J_LinkBuy">立刻购买<b></b></a>
+		</div> -->
+	</div>
+    <?php echo $this->getChildHtml('', true, true) ?>
+<?php endif; ?>
+<script>
+	(function($){
+		$().ready(function(){
+			$('#J_Amount .increase,#J_Amount .decrease').click(function(){
+				var cls = $(this).attr('class');
+				var qty = parseInt($('#J_AmountWidget #J_IptAmount').val(),10);
+				
+				switch(cls){
+					case 'increase':
+						qty +=1;
+						break;
+					case 'decrease':
+						qty -=1;
+						break;
+					default:
+				}
+				if(qty<=0){
+					qty = 1;
+				}
+				$('#J_AmountWidget #J_IptAmount').val(qty);
+			});
+			$('#J_AmountWidget #J_IptAmount').keyup(function(){
+				var val = $('#J_AmountWidget #J_IptAmount').val();
+				var reg = /^[1-9]+[0-9]*$/;
+				if(!reg.test(val)){
+					val = 1;
+				}
+				$('#J_AmountWidget #J_IptAmount').val(val);
+			});
+		});
+	})(jQuery);
+</script>

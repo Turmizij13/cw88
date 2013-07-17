@@ -1,0 +1,16 @@
+<?php echo $this->getChildHtml('product_wall_index')?>
+<script type="text/javascript">
+	(function($){
+		
+			$('.tb-shop .ym9_wall span').each(function(){
+				if(!$(this).hasClass('pfive')){
+					$(this).find('a').first().addClass('fgover');
+				}
+			});
+			$('.tb-shop .ym9_wall .fgover').each(function(){
+				$(this).find('img:eq(0)').addClass('zimg');
+				$(this).find('img:eq(1)').addClass('fimg');
+			});
+		
+	})(jQuery);
+</script>

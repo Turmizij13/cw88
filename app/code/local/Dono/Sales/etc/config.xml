@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dono_Sales>
+            <version>1.0.1</version>
+        </Dono_Sales>
+    </modules>
+    <admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<donosales before="Mage_Adminhtml">Dono_Sales_Adminhtml</donosales>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<layout>
+			<updates>
+				<donosales>
+					<file>donosales.xml</file>
+				</donosales>
+			</updates>
+		</layout>
+	</adminhtml>
+	<global>
+		<blocks>
+			<donosales>
+				<class>Dono_Sales_Block</class>
+			</donosales>
+		</blocks>
+		<models>
+			<donosales>
+				<class>Dono_Sales_Model</class>
+			</donosales>
+			<donosales></donosales>
+			<sales_resource>
+				<rewrite>
+					<order_grid_collection>Dono_Sales_Model_Resource_Order_Grid_Collection</order_grid_collection>
+				</rewrite>
+			</sales_resource>
+			
+		</models>
+		<helpers>
+			<donosales>
+				<class>Dono_Sales_Helper</class>
+			</donosales>
+		</helpers>
+	</global>
+</config>

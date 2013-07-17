@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<edmconfig translate="label" module="edm">
+			<label>EDM Config</label>
+			<sort_order>99999</sort_order>
+		</edmconfig>
+	</tabs>
+	<sections>
+		<edm_options translate="label" module="edm">
+			<label>EDM Config Options</label>
+			<tab>edmconfig</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>20</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<schedule translate="label">
+					<label>Schedule EDM Config Fields</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>20</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label">
+                            <label>Enable Scheduled EDM</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+						<cron_expr>
+							<label>Edm Cron Expr</label>
+							<frontend_type>text</frontend_type>
+							<depends><enabled>1</enabled></depends>
+							<backend_model>edm/config_backend_cron</backend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</cron_expr>
+					</fields>
+				</schedule>
+				<smtp>
+					<label>EDM SMTP Config Fields</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>30</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label">
+                            <label>Enable SMTP</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+						<username translate="label comment">
+						    <comment>If you use Authentication for your SMTP server this is the username used to authenticate.</comment>
+							<label>Username</label>
+							<depends><enabled>1</enabled></depends>
+							<frontend_type>text</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</username>
+						<password translate="label comment">
+						    <comment>If you use Authentication for your SMTP server this is the password used to authenticate.</comment>
+							<label>Password</label>
+							<depends><enabled>1</enabled></depends>
+							<frontend_type>password</frontend_type>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</password>
+						<host translate="label comment">
+					    	<comment>This is the SMTP server hostname you would like to send your emails through. This is required.</comment>
+                            <label>Host</label>
+                            <depends><enabled>1</enabled></depends>
+                             <frontend_type>text</frontend_type>
+                             <sort_order>40</sort_order>
+                             <show_in_default>1</show_in_default>
+                             <show_in_website>1</show_in_website>
+                             <show_in_store>0</show_in_store>
+                        </host>
+                        <port translate="label comment">
+					    	  <comment>This is the port on the SMTP server you connect to. The value is optional, it defaults to 25 for none and TLS or 465 for SSL.</comment>
+                              <label>Port</label>
+                              <depends><enabled>1</enabled></depends>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>50</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                       </port>
+                       <ssl translate="label comment">
+                            <label>SSL Security</label>
+                            <comment>This will determine if any SSL security should be used to connect to your SMTP server.</comment>
+                            <depends><enabled>1</enabled></depends>
+                            <frontend_type>select</frontend_type>
+                            <source_model>edm/system_config_source_smtp_ssl</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+	                   </ssl>
+					</fields>
+				</smtp>
+			</groups>
+		</edm_options>
+	</sections>
+</config>

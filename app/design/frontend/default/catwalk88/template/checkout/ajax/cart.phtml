@@ -1,0 +1,21 @@
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+/* @var $this  Mage_Checkout_Block_Cart */
+?>
+<div class="cart ajax"><?php foreach($this->getItems() as $_item): ?> <?php echo $this->getItemHtml($_item) ?>
+<?php endforeach ?>
+
+<div class="cart-collaterals">
+<div class="totals"><label><?php echo $this->__('Cart Total:')?></label>
+<?php echo Mage::helper('core')->currency($this->getQuote()->getBaseSubtotal(),true,false); ?>
+</div>
+</div>
+<div class="buttons">
+	<a href="<?php echo $this->getUrl('onestepcheckout')?>" title="Checkout" class="button checkout mr10"><?php echo $this->__('Proceed to Checkout')?></a>
+	<a href="<?php echo $this->getUrl('checkout/cart')?>" title="View Cart" class="button viewcart"><?php echo $this->__('View Cart')?></a>
+</div>
+</div>

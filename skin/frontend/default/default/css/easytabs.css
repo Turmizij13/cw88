@@ -1,0 +1,101 @@
+/********************** Tabs */
+.product-view .tabs {
+	overflow: hidden;
+	zoom: 1;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D2D2D2;
+    height: 30px;
+}
+
+.product-view .tabs li {
+	float: left;
+	font-size: 14px;
+	height:28px;
+	line-height:28px;
+	overflow: hidden;
+	color: #333333;
+    margin-left: -1px;
+    padding: 1px 0;
+}
+.product-view .tabs li.active{
+	background-color: #F5F3F0;
+	border-top: 4px solid #B10000;
+    height: 28px;
+    margin-top: -1px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+.product-view .tabs li.active a {
+    border-right: 1px solid #D2D2D2;
+    height: 28px;
+    line-height: 24px;
+}
+.product-view .tabs li a{
+	border-left: 1px solid #D2D2D2;
+    color: #333333;
+    float: left;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 20px;
+    text-decoration: none;
+}
+
+
+
+
+
+.product-view .tabs a {
+	display: block;
+	padding: 6px 10px;
+	color: #444;
+	text-decoration: none;
+}
+
+.product-view .tabs a:hover {
+	text-decoration: none;
+	color: #444;;
+	text-decoration: none;
+}
+
+.product-view .tabs li.active a,.product-view .tabs li.active a:hover {
+	font-weight: bold;
+}
+
+#product_tabs_tags_tabbed_contents.input-box input {
+	width: 300px;
+}
+
+#product_tabs_tags_tabbed_contents .input-box {
+	width: 300px;
+	float: left;
+	margin-right: 10px;
+}
+
+#product_tabs_related_tabbed_contents li {
+	float: left;
+	margin-right: 10px;
+}
+
+#product_tabs_related_tabbed_contents ol {
+	clear: both;
+}
+
+.product-collateral:after {
+	content: ".";
+	display: block;
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+	height: 0;
+	overflow: hidden;
+	zoom: 1
+}
+#tabBarBox{
+    border: 1px solid #D2D2D2;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    width: 100%;
+    z-index: 9999;
+    background-color: #F5F3F0;
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <Dono_Checkout>
+            <version>1.0.0</version>
+        </Dono_Checkout>
+    </modules>
+    <global>
+        <models>
+            <donocheckout>
+                <class>Dono_Checkout_Model</class>
+            </donocheckout>
+        </models>
+        <helpers>
+            <donocheckout>
+                <class>Dono_Checkout_Helper</class>
+            </donocheckout>
+        </helpers>
+        <blocks>
+            <donocheckout>
+                <class>Dono_Checkout_Block</class>
+            </donocheckout>
+        </blocks>
+        <!-- normal rewrite controller
+        <rewrite>
+		    <Dono_CatalogSearch_donocatalogsearch_result>
+		        <from><![CDATA[#^/catalogsearch/result/#]]></from>
+		        <to>/donocatalogsearch/result/</to>
+		    </Dono_CatalogSearch_donocatalogsearch_result>
+		</rewrite>
+		-->
+    </global>
+    <frontend>
+        <routers>
+           <checkout>
+           		<use>standard</use>
+                <args>
+                    <modules>
+                        <Dono_Checkout before="Mage_Checkout">Dono_Checkout</Dono_Checkout>
+                    </modules>
+                    <module>Dono_Checkout</module>
+                    <frontName>checkout</frontName>					
+                </args>
+            </checkout>
+        </routers>
+        <layout>
+            <updates>
+                <donocheckout>
+                    <file>donocheckout.xml</file>
+                </donocheckout>
+            </updates>
+        </layout>
+    </frontend>
+</config>

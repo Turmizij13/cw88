@@ -1,0 +1,154 @@
+<!--@subject {{var store.getFrontendName()}}: Shipment # {{var shipment.increment_id}} for Order # {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var shipment.increment_id":"Shipment Id",
+"var order.increment_id":"Order Id",
+"var order.billing_address.format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.shipping_address.format('html')":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"layout handle=\"sales_email_order_shipment_items\" shipment=$shipment order=$order":"Shipment Items Grid",
+"block type='core/template' area='frontend' template='email/order/shipment/track.phtml' shipment=$shipment order=$order":"Shipment Track Details",
+"var comment":"Shipment Comment"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<body style="background:#F6F6F6; font-family:Catwalk-Regular,Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Catwalk-Regular,Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+    <td align="center" valign="top" style="padding:20px 0 20px 0">
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="750" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top">
+				<div style="text-align: center;">
+						<a href="http://catwalk88.com/" style="background: url(http://catwalk88.com/skin/frontend/default/catwalk88/images/logo.png) no-repeat scroll center center transparent;display: inline-block;height: 90px;margin: 0 auto;width: 100px;"></a>
+				</div>				
+				</td>
+            </tr>
+            <tr>
+            	<td>
+            		<div>
+						<ul style="margin:0 auto;padding:0 16px;width: 750px;list-style: none;color:#666666;font-size: 14px;font-weight: bold;">
+							<li style="float: left;width: 110px;text-align: center;"><a style="text-decoration: none;color: #666666;padding:6px 12px 6px 8px;" href="http://catwalk88.com/"><span>HOME</span></a></li>
+							<li style="float: left;width: 110px;text-align: center;"><a style="text-decoration: none;color: #666666;padding:6px 12px 6px 8px;" href="http://catwalk88.com/tops.html" title="Tops" class=""><span>TOPS</span></a></li>
+							<li style="float: left;width: 110px;text-align: center;"><a style="text-decoration: none;color: #666666;padding:6px 12px 6px 8px;" href="http://catwalk88.com/dresses.html" title="Dresses" class=""><span>DRESSES</span></a></li>
+							<li style="float: left;width: 110px;text-align: center;"><a style="text-decoration: none;color: #666666;padding:6px 12px 6px 8px;" href="http://catwalk88.com/bottoms.html" title="Bottoms"><span>BOTTOMS</span></a></li>
+							<li style="float: left;width: 110px;text-align: center;"><a style="text-decoration: none;color: #666666;padding:6px 12px 6px 8px;" href="http://catwalk88.com/shoes.html" title="Shoes"><span>SHOES</span></a></li>
+							<li style="float: left;width: 110px;text-align: center;"><a style="text-decoration: none;color: #666666;padding:6px 12px 6px 8px;" href="http://catwalk88.com/the-brand"><span>ABOUT US</span></a></li>
+						</ul>
+					</div>
+            	</td>
+            </tr>
+            <tr>
+            	<td>
+            		<div style="border-top:2px solid #F2F2F4;padding:10px 0;">
+					<div>
+						<div style="border-right:2px solid #A7A7A7;width:49.5%;float:left;">
+							<div style="text-align: center;">
+								<div style="color:#36AB9F;font-weight: bold;font-size: 17px;">FREE WORLDWIDE DELIVERY</div>
+								<div style="color:#C3C3C3;font-size: 17px;">on order above US$75</div>
+							</div>
+						</div>
+						<div style="border:none;float: left;width: 49.5%;">
+							<div style="text-align: center;">
+								<div style="color:#7C7C7C;font-weight: bold;font-size: 17px;">NEW IN</div>
+								<div style="color:#C3C3C3;font-size: 17px;">Shop the lastest styles</div>
+							</div>
+						</div>
+					</div>
+					</div>
+            	</td>
+            </tr>
+            <tr>
+            	<td align="center">
+	            	<div style="width:680px;margin: 0 auto;">
+	            		<h1 style="text-align: center;font-weight: bold;font-size:21px;color:#b3b3b3;">Your order is on it's way!</h1>
+	            		<p style="margin:0;color:#b3b3b3;font-weight:bold;text-align: center;font-size:13px;">
+	            			We've just sent you a pretty little package.Your order has just been shipped,and you can now
+	            			track it all the way to your door!Please find your tracking number bleow:
+	            		</p>
+	            		<p style="text-align: center;font-size:17px;font-weight: bold;line-height:1.5em;: 0;padding: 0;">
+	            			ORDER NUMBER:<span style="color:00ACA8;">{{var order.increment_id}}</span>(placed on {{var order.getCreatedAtFormated('long')}} 
+	            			{{block type='core/template' area='frontend' template='email/order/shipment/track.phtml' shipment=$shipment order=$order}}
+	            		</p>
+	            	</div>
+            	</td>
+            </tr>
+         
+            <tr>
+                <td>
+                    <h2 style="font-size:12px; font-weight:normal; margin:0;color:#666666;">ORDER CONFIRMATION</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th align="left" width="250"  style="color:#00ACA8;font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">BILLING INFORMATION</th>
+                            <th align="left" width="250"  style="color:#00ACA8;font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">ShIP TO</th>
+                            <th align="left" width="250"  style="color:#00ACA8;font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">PAYMENT METHOD</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td rowspan="2" valign="top" style="font-size:12px; padding:7px 9px 9px 9px;color:#666666;">
+                                {{var order.getBillingAddress().format('html')}}
+                                &nbsp;
+                            </td>
+                            <td rowspan="2"  valign="top" style="font-size:12px; padding:7px 9px 9px 9px;color:#666666;">
+                                {{var order.getShippingAddress().format('html')}}
+                                &nbsp;
+                            </td>
+                            <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px;color:#666666;">
+                                {{var payment_html}}
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+	                 		<td valign="top" style="font-size:12px; padding:7px 9px 9px 9px;color:#666666;">
+	                 				<h1 style="color:#00ACA8;margin:0;padding:0;font-size:13px;">SHIPPING METHOD</h1>
+	                               {{var order.getShippingDescription()}}
+	                                &nbsp;
+	                        </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    {{layout handle="sales_email_order_items" order=$order}}
+                    <p style="font-size:12px; margin:0 0 10px 0">{{var order.getEmailCustomerNote()}}</p>
+                </td>
+            </tr>
+            <tr>
+            	<td>
+            		<div style="width:100%;">
+            			<h1 style="padding:0;margin:0;font-size:18px;font-weight:bold;text-align: center;color:#b3b3b3;">GET SOCIAL!</h1>
+            			<div style="text-align: center;">
+            				<a href="https://www.facebook.com/CATWALK88fashion" style="background:url(http://catwalk88.com/skin/frontend/default/catwalk88/images/social-share-icons-mini.jpg) no-repeat scroll -1px 0  transparent;display:inline-block;width:15px;height:15px"></a>
+            				<a href="https://twitter.com/catwalk_88" style="background:url(http://catwalk88.com/skin/frontend/default/catwalk88/images/social-share-icons-mini.jpg) no-repeat scroll -19px 0  transparent;display:inline-block;width:15px;height:15px"></a>
+            				<a href="http://catwalk88.com/statigr.am/tag/catwalk88" style="background:url(http://catwalk88.com/skin/frontend/default/catwalk88/images/social-share-icons-mini.jpg) no-repeat scroll -38px 0  transparent;display:inline-block;width:15px;height:15px"></a>
+            				<a href="http://www.youtube.com/user/catwalkeightyeight" style="background:url(http://catwalk88.com/skin/frontend/default/catwalk88/images/social-share-icons-mini.jpg) no-repeat scroll -57px 0  transparent;display:inline-block;width:15px;height:15px"></a>
+            				<a href="http://pinterest.com/catwalk88/" style="background:url(http://catwalk88.com/skin/frontend/default/catwalk88/images/social-share-icons-mini.jpg) no-repeat scroll -76px 0  transparent;display:inline-block;width:15px;height:15px"></a>
+            			</div>
+            		</div>
+            	</td>
+            </tr>
+            <tr>
+                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you, <strong>{{var store.getFrontendName()}}</strong></p></center></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>

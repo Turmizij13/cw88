@@ -1,0 +1,161 @@
+@CHARSET "UTF-8";
+.main .std .page-title{
+	display: none;
+}
+.vivian-static-block{
+	border-top:2px solid #CCCCCC;
+	padding: 20px 0;
+}
+.vivian-static-block .block{
+	border:none;
+	margin: 0;
+	padding:0;
+	text-align: center;
+}
+
+.vivian-static-block .vivian-s-b_1,
+.vivian-static-block .vivian-s-b_2,
+.vivian-static-block .vivian-s-b_3{
+	float: left;
+	border: none;
+	width: 33%;
+	
+}
+.vivian-static-block .vivian-s-b_1,
+.vivian-static-block .vivian-s-b_2{
+	border-right: 1px solid #242424;
+}
+.vivian-static-block .vivian-s-b_1 .title,
+.vivian-static-block .vivian-s-b_2 .title,
+.vivian-static-block .vivian-s-b_3 .title
+{
+	font:14px/1.55 Catwalk-Medium, Arial, Helvetica, sans-serif;
+}
+.vivian-static-block .vivian-s-b_1 .content,
+.vivian-static-block .vivian-s-b_2 .content,
+.vivian-static-block .vivian-s-b_3 .content
+{
+	font-size: 14px;
+}
+.vivian-static-block .vivian-s-b_1 .title a{
+	color:#36ab9f;
+}
+.vivian-static-block .vivian-s-b_2 .title a{
+	color:#e4b061;	
+}
+.vivian-static-block .vivian-s-b_3 .title a{
+	color:#bb92b5;	
+}
+.vivian-static-block-featured .block-bg .hr-left{
+	width: 43%;
+	float: left;
+	padding: 17px 0;
+}
+.vivian-static-block-featured .block-bg .text{
+	width: 14%;
+	float: left;
+	font: 24px/1.55 Catwalk-Regular, Arial, Helvetica, sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+}
+.vivian-static-block-featured .block-bg .hr-right{
+	width: 43%;
+	float: left;
+	padding: 17px 0;
+}
+.vivian-static-block-featured .block-bg hr{
+	background: #4b4b4b;
+	height: 3px;
+}
+.vivian-static-block-featured .vivian-s-b-f .s-b-f{
+	float: left;
+	margin:0 7px 10px 0;
+}
+.vivian-static-block-featured .vivian-s-b-f .s-b-f.l-e{
+	margin-right:0;
+}
+.vivian-static-block-featured .vivian-s-b-f .block{
+	border:none;
+	margin: 0;
+	padding: 0;
+}
+.vivian-s-b-f .s-b-f .text .pdn{
+	font-size: 12px;
+}
+.vivian-s-b-f .s-b-f .text .pdop{
+	font-size: 12px;
+}
+.vivian-s-b-f .s-b-f .text .pdsp{
+	font-size: 14px;
+	color: #e66d7e;
+}
+
+
+
+
+
+
+
+.vivian-static-block-newstyles .block-bg .hr-left{
+	width: 42%;
+	float: left;
+	padding: 17px 0;
+}
+.vivian-static-block-newstyles .block-bg .text{
+	width: 16%;
+	float: left;
+	font: 24px/1.55 Catwalk-Regular, Arial, Helvetica, sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+}
+.vivian-static-block-newstyles .block-bg .hr-right{
+	width: 42%;
+	float: left;
+	padding: 17px 0;
+}
+.vivian-static-block-newstyles .block-bg hr{
+	background: #4b4b4b;
+	height: 3px;
+}
+.vivian-static-block-newstyles .vivian-s-b-ns .s-b-ns{
+	float: left;
+	margin:0 7px 10px 0;
+}
+.vivian-static-block-newstyles .vivian-s-b-ns .s-b-ns.l-e{
+	margin-right:0;
+}
+.vivian-static-block-newstyles .vivian-s-b-ns .block{
+	border:none;
+	margin: 0;
+	padding: 0;
+}
+.vivian-s-b-ns .s-b-ns .text .pdn{
+	font-size: 12px;
+}
+.vivian-s-b-ns .s-b-ns .text .pdop{
+	font-size: 12px;
+}
+.vivian-s-b-ns .s-b-ns .text .pdsp{
+	font-size: 14px;
+	color: #e66d7e;
+}
+#vivian-switcher{
+	position: absolute;
+	z-index: 11;
+	left: 50%;
+	bottom: 0;
+	display: block;
+	margin-left:-37.5px;
+}
+#vivian-switcher .nav li{
+	float: left;
+	cursor: pointer;
+}
+#vivian-switcher .vivian-switch-item{
+	background: url('../images/switch-ctls.png') no-repeat scroll -23px 0 transparent;
+	width: 15px;
+	height: 15px;
+}
+#vivian-switcher .vivian-switch-item:hover,#vivian-switcher .vivian-switch-item.selected{
+	background-position: 0 0;
+}

@@ -1,0 +1,152 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $zoomenabled = Mage::getStoreConfig('color_selector_plus/zoom/enabled');
+?>
+<?php if($zoomenabled): ?>
+	
+	<div id="zoomWrapper">
+		<p class="product-image-zoom">
+			<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+  				<?php $_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="jqzoom" id="anchor_default"><img id="image_default" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(460).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'"/></a>'; ?>
+	  			<?php echo $_helper->productAttribute($_product, $_img, 'image'); ?>
+ 			<?php else: ?>
+ 				<?php $_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="jqzoom"><img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(460).'" alt="'.$this->htmlEscape($_product->getImageLabel()).'" id="image_default"/></a>'; ?>
+        		<?php echo $_helper->productAttribute($_product, $_img, 'image'); ?>
+    		<?php endif; ?>
+	
+			<?php if (count($this->getGalleryImages()) > 0): ?>
+				<?php foreach ($this->getGalleryImages() as $_image): ?>
+					<?php $img_name =  Mage::helper('colorselectorplus')->getImageName($this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())); ?>
+					<?php $_img = '<a href="'.$this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile()).'" id="anchor_image'.$img_name.'"><img id="image'.$img_name.'" src="'.$this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())->resize(460).'" alt="'.$this->htmlEscape($_image->getLabel()).'" title="'.$this->htmlEscape($_image->getLabel()).'"/></a>'; ?>
+			  		<?php echo $_helper->productAttribute($this->getProduct(), $_img, 'image'); ?>
+				<?php endforeach; ?>
+	 		<?php endif; ?>
+  		</p>
+		<!-- <p id="roll_on">Roll over to zoom in</p> -->
+	</div>
+
+<?php else: ?>
+<div id="loadingImage" style="display:none;">Loading... </div>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<p class="product-image product-image-zoom">
+    <?php
+        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<p class="zoom-notice" id="track_hint"><?php echo $this->__('Double click on above image to view full picture') ?></p>
+<div class="zoom">
+    <img id="zoom_out" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_out.gif') ?>" alt="<?php echo $this->__('Zoom Out') ?>" title="<?php echo $this->__('Zoom Out') ?>" class="btn-zoom-out" />
+    <div id="track">
+        <div id="handle"></div>
+    </div>
+    <img id="zoom_in" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_in.gif') ?>" alt="<?php echo $this->__('Zoom In') ?>" title="<?php echo $this->__('Zoom In') ?>" class="btn-zoom-in" />
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    Event.observe(window, 'load', function() {
+        product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
+    });
+//]]>
+</script>
+<?php else: ?>
+<p class="product-image">
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(460).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<?php endif; ?>
+<?php endif; ?>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+	<div class="more-views">
+		<?php if ($_product->getTypeId() == "configurable" && Mage::helper('colorselectorplus')->getUsesSwatchAttribs($_product) == 'yes'): ?>					
+			<?php if($zoomenabled): ?>
+				<?php echo Mage::helper('colorselectorplus')->getMoreViewsZoom($_product); ?>
+			<?php else: ?>
+				<?php echo Mage::helper('colorselectorplus')->getMoreViews($_product); ?>
+			<?php endif; ?>
+		<?php else : ?>		
+    		<h2><?php echo $this->__('More Views') ?></h2>
+    		<ul>
+    			<?php if($zoomenabled): ?>
+    				
+    				<?php foreach ($this->getGalleryImages() as $_image): ?>
+        				<?php $img_name = Mage::helper('colorselectorplus')->getImageName($this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())); ?>
+						<li>
+							<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); ?>" onclick="zoomSwitch('<?php echo $img_name;?>');" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />		
+						</li>
+    				<?php endforeach; ?>
+    				
+    			<?php else: ?>
+    			<?php foreach ($this->getGalleryImages() as $_image): ?>
+        			<li>
+            			<a href="#" onclick="popWin('<?php echo $this->getGalleryUrl($_image) ?>', 'gallery', 'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); ?>" width="56" height="56" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+        			</li>
+    			<?php endforeach; ?>
+    		<?php endif;?>
+    		</ul>
+      	<?php endif; ?>
+	</div>
+<?php endif; ?>
+
+<?php if($zoomenabled): ?>
+	<script type="text/javascript">
+		var zoomOptions = {
+        	zoomWidth: <?php echo Mage::getStoreConfig('color_selector_plus/zoom/width') ?>,
+          	zoomHeight: <?php echo Mage::getStoreConfig('color_selector_plus/zoom/height') ?>,
+           	showEffect: '<?php echo Mage::getStoreConfig('color_selector_plus/zoom/showeffect') ?>',
+           	hideEffect: '<?php echo Mage::getStoreConfig('color_selector_plus/zoom/hideffect') ?>',
+           	fadeinSpeed: '<?php echo Mage::getStoreConfig('color_selector_plus/zoom/fadeinspeed') ?>',
+           	fadeoutSpeed: '<?php echo Mage::getStoreConfig('color_selector_plus/zoom/fadeoutspeed') ?>',
+           	title: <?php echo Mage::getStoreConfig('color_selector_plus/zoom/title') ?>,
+			zoomtype:'<?php echo Mage::getStoreConfig('color_selector_plus/zoom/type') ?>',
+			showPreload: <?php echo Mage::getStoreConfig('color_selector_plus/zoom/showpreload') ?>,
+			lens: <?php echo Mage::getStoreConfig('color_selector_plus/zoom/lens') ?>,
+			imageOpacity: <?php echo Mage::getStoreConfig('color_selector_plus/zoom/opacity') ?>
+      	}
+      	console.debug(zoomOptions);
+		jQuery(document).ready(function(){
+     		jQuery(".jqzoom").jqzoom(zoomOptions);
+     		jQuery("#zoomWrapper img").hide();
+      		jQuery("#image_default").show();
+      		jQuery('.vivian-view li').hover(function(){
+      			jQuery(this).addClass('selected').siblings('li').removeClass('selected');
+      			jQuery(this).find('img').trigger('click');
+          	});
+  		});
+	</script>
+<?php endif; ?>

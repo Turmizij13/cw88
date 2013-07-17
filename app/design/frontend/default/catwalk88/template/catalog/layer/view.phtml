@@ -1,0 +1,93 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/* @var $this Mage_Catalog_Block_Layer_View */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+$path  = Mage::helper('catalog')->getBreadcrumbPath();
+?>
+<?php if($this->canShowBlock()): ?>
+<div class="vivian-block">
+			<div class="vivian-title">
+				<label class="t-l"><?php echo $this->__('Refine');?></label>
+			</div>
+			<?php if($this->getStateHtml()):?>
+			<div class="vivian-attr-selected">
+				<?php echo $this->getStateHtml() ?>
+			</div>
+			<?php endif;?>
+			<div class="vivian-opts-list">
+			  	<?php if($this->canShowOptions()): ?>
+		        <?php $_filters = $this->getFilters() ?>
+		        <?php $priceFilter = null;?>
+				<?php foreach ($_filters as $_filter): ?>
+					<?php /* @var $_filter Mage_Catalog_Block_Layer_Filter_Abstract */?>
+					<?php $_filterModel = $_filter->getAttributeModel();
+						  if($_filterModel)  $_code =  $_filterModel->getAttributeCode();
+					?>
+					<?php if($_code=='price'):?>
+						<?php $priceFilter = $_filter;continue;?>
+					<?php endif;?>
+					<?php if($_filter->getItemsCount()): ?>
+						<dl class="opt-item">
+						<dd class="opt-lb"><s class="opt-i-s"></s><label class="opt-name"><?php echo $this->__($_filter->getName()) ?></label></dd>
+						<dt class="opt-list clearfix opt-a-<?php echo $_code?>"><?php echo $_filter->getHtml() ?></dt>
+						</dl>
+					<?php endif; ?>
+				<?php endforeach; ?>
+					<?php if($priceFilter&&$priceFilter->getItemsCount()): ?>
+					<dl class="opt-item">
+						<dd class="opt-lb"><s class="opt-i-s"></s><label class="opt-name"><?php echo $this->__($priceFilter->getName()) ?></label></dd>
+						<dt class="opt-list"><input type="text" style="border: none;" id="amount"></dt>
+						<dt class="opt-list"><div id="slider-range"></div></dt>
+						<dt class="opt-list clearfix opt-a-price"><?php echo $priceFilter->getHtml() ?></dt>
+					</dl>
+					<?php endif; ?>
+				<?php endif; ?>
+			</div>
+</div>
+<?php endif; ?>
+<script>
+(function($){
+	$(function() {
+		$("#slider-range").slider({
+		range: true,
+		min: 0,
+		max: 1000,
+		values: [ 0, 0 ],
+			slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+			}
+		});
+		/*$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+		" - $" + $( "#slider-range" ).slider( "values", 1 ) );*/
+	});
+})(jQuery);
+</script>

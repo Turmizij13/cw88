@@ -1,0 +1,14 @@
+<?php 
+	/* @var $this ECargo_Catalog_Block_Wrapper */
+	$bymbol = Mage::app()->getLocale()->currency( Mage::app()->getStore()->getCurrentCurrencyCode() )->getSymbol();
+	if($group = $this->getChildGroup('wrapper_static')):
+		foreach ($group as $block):
+			if($block&&$block->getParseCurrency()){
+				$html = $block->toHtml(); 
+				echo preg_replace_callback('/{{(\S*)}}/', function ($match){
+    				return Mage::helper('core')->currency($match[1],true,true);
+				}, $html);
+			}
+		endforeach;	
+	endif;
+?>

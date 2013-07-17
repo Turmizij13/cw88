@@ -1,0 +1,136 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$orderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+if ($orderId) {
+    $order = Mage::getModel('sales/order')->load($orderId);
+}
+?>
+<script>
+var google_conversion_id = 985040484;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "iHY7CITR1gUQ5Iza1QM";
+var google_conversion_value = 0;
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+<?php endif;?>
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+<?php if($order):?>
+	<iframe src="https://t.dgm-au.com/ifconv/?irchannel=4625&cid=2072&oid=<?php echo $order->getIncrementId();?>&sku=[SKU]&amt=<?php echo $order->getBaseGrandTotal();?>&postcode=<?php echo $order->getShippingAddress()->getPostcode();?>&promocode=<?php echo $order->getCouponCode();?>" width="1" height="1" frameborder="0" scrolling="no"></iframe>
+	<!-- BEGIN COMMISSION JUNCTION TRACKING CODE -->
+		<?php 
+			  	$baseUrl = "https://www.emjcd.com/tags/c?";
+			  	$pBaseUrl = 'https://t.pepperjamnetwork.com/track?';
+		   		/* @var $order Mage_Sales_Model_Order */
+				$params  =  array(
+				  		'containerTagId'=>5379,
+				  		'CID'			=>1528496,
+				  		'TYPE'			=>363382,
+				  		'CURRENCY'		=>'USD',
+				  		'OID'			=>$order->getIncrementId(),
+				 );
+				 $pepperParams = array(
+				 	'PID'=>'6779',
+				 	'INT'=>'ITEMIZED',
+				 	'OID'=>$order->getIncrementId(),
+				 );
+				 foreach ($order->getAllVisibleItems() as $key=>$item){
+				 	/* @var $item  Mage_Sales_Model_Order_Item */
+				 	$itm		= 'ITEM'.$key;
+				 	$amt		= 'AMT'.$key;
+				 	$pamt		= 'AMOUNT'.$key;
+				 	$qty		= 'QTY'.$key;
+				 	$dcn		= 'DCNT'.$key;
+				 	$params[$itm] = $item->getSku();
+				 	$params[$amt] = $item->getBasePrice();
+				 	$params[$qty] = $item->getQtyOrdered();
+				 	$params[$dcn] = $item->getBaseDiscountAmount();
+				 	$pepperParams[$itm] = $item->getSku();
+				 	$pepperParams[$qty] = $item->getQtyOrdered();
+				 	$pepperParams[$pamt] = $item->getBasePrice();
+				 }
+				$url = $baseUrl.http_build_query($params);
+				$purl = $pBaseUrl.http_build_query($pepperParams);
+		?>
+		<iframe height="1" width="1" 
+				frameborder="0" 
+				scrolling="no" 
+				src="<?php echo $url;?>" 
+				name="cj_conversion" ></iframe>
+	<!-- END COMMISSION JUNCTION TRACKING CODE -->
+	<iframe src="<?php echo $purl?>" width="1" height="1" frameborder="0"></iframe>
+	
+<?php $items = $order->getAllVisibleItems();?>
+<script type="text/javascript">
+    var cf_merchant = "3f025200-d875-45c7-ad96-c7038baf1bcb";
+    var cf_order = "<?php print($order->getIncrementId()); ?>";
+    var cf_amount = <?php print($order->subtotal + $order->discount_amount); ?>;
+    var cf_items = new Array();
+
+    <?php for ($i = 0; $i < count($items); $i++) { ?>
+        cf_items.push({ sku: "<?php print($items[$i]->getSku()); ?>", price: <?php print($items[$i]->getPrice()); ?>, quantity: <?php print($items[$i]->getQtyOrdered()); ?> });
+    <?php } ?>
+</script>
+<script src="https://track.commissionfactory.com.au/Track.js" type="text/javascript"></script>
+	
+<?php endif;?>

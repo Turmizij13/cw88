@@ -1,0 +1,16 @@
+<?php 
+	$isLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+?>
+<?php if($isLoggedIn):?>
+		<div class="v-acc-wrapper">
+			<a href="<?php echo $this->getUrl('customer/account')?>"><?php echo $this->__('MY ACCOUNT')?></a>
+			<ul class="v-links">
+				<li><a href="<?php echo $this->getUrl('sales/order/history')?>"><?php echo $this->__('MY ORDERS')?></a></li>
+				<li><a href="<?php echo $this->getUrl('wishlist')?>"><?php echo $this->__('MY WISHLIST')?></a></li>
+				<li><a href="<?php echo $this->getUrl('customer/account/edit')?>"><?php echo $this->__('ACCOUNT INFO')?></a></li>
+				<li><a href="<?php echo $this->getUrl('customer/account/logout')?>"><?php echo $this->__('SIGN OUT')?></a></li>
+			</ul>
+		</div>
+<?php else:?>
+	 <a href="<?php echo $this->getUrl('customer/account')?>"><?php echo $this->__('LOG IN')?></a>/<a href="<?php echo $this->getUrl('customer/account/create')?>"><?php echo $this->__('SIGN UP')?></a>
+<?php endif;?>

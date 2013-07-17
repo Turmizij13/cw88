@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<adminhtml_order_aggregator_index>
+		<reference name="content">
+            <block type="donosales/adminhtml_sales_order" name="sales_order.grid.container"></block>
+        </reference>
+	</adminhtml_order_aggregator_index>
+	
+	<adminhtml_order_aggregator_grid>
+        <update handle="formkey"/>
+        <block type="donosales/adminhtml_sales_order_grid" name="sales_order.grid" output="toHtml"></block>
+    </adminhtml_order_aggregator_grid>
+</layout>

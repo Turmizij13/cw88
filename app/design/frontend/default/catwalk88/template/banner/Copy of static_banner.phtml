@@ -1,0 +1,165 @@
+<?php 
+/* @var $this Dono_Banner_Block_Banner_Home */
+$banners = $this->getBanners();
+?>
+<?php if($this->canShow()):?>
+<div class="box nobox J_TBox nobianjubox">
+<div class="outfullscreen ">
+<div class="J_TWidget full_screen ">
+<div class="withdraw">
+<div class="cutover-dis" id="home_slide">
+<?php foreach ($banners as $banner):?>
+<div style="background: url(<?php echo $this->getImage($banner)?>) no-repeat scroll center top transparent; display: block; opacity: 1; position: absolute; z-index: <?php echo $this->getPosition($banner)?>;" class="hbitem bigimg   ks-switchable-panel-internal135"><a style="display:block;width:100%;height:100%;" title="" target="_blank" href="<?php echo $banner['href']?>"></a></div>
+<!-- <div style="background: url(images/T20YSbXiJcXXXXXXXX_!!1636940752.jpg) no-repeat scroll center top transparent; display: block; opacity: 1; position: absolute; z-index: 2;" class="hbitem bigimg   ks-switchable-panel-internal135"><a title="" target="_blank" href=""></a></div>
+<div style="background: url(images/T232H8XiRXXXXXXXXX_!!1636940752.jpg) no-repeat scroll center top transparent; display: block; opacity: 1; position: absolute; z-index: 0;" class="hbitem bigimg   ks-switchable-panel-internal135"><a title="" target="_blank" href=""></a></div>
+<div style="background: url(images/T2CrJTXepeXXXXXXXX_!!1636940752.png) no-repeat scroll center top transparent; display: block; opacity: 1; position: absolute; z-index: 0;" class="hbitem bigimg   ks-switchable-panel-internal135"><a title="" target="_blank" href=""></a></div>
+<div style="background: url(images/T2pZDPXmpaXXXXXXXX_!!1636940752.png.jpg) no-repeat scroll center top transparent; display: block; opacity: 1; position: absolute; z-index: 0;" class="hbitem bigimg   ks-switchable-panel-internal135"><a title="" target="_blank" href=""></a></div>
+<div style="background: url(images/T2SH_RXexXXXXXXXXX_!!1636940752.png.jpg) no-repeat scroll center top transparent; display: block; opacity: 1; position: absolute; z-index: 0;" class="hbitem bigimg   ks-switchable-panel-internal135"><a title="" target="_blank" href=""></a></div>
+ -->
+<?php endforeach;?>
+</div>
+</div>
+<div style="display: none;" class="navout" id="vivian-switcher">
+	
+</div>
+<div class="outbtn" id="outbtn">
+<div title="上一张"  class="prev J_TWidget" id="prev"></div>
+<div title="下一张"  class="next J_TWidget" id="next"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+
+(function(){
+    if(!Function.prototype.bind){
+        Function.prototype.bind = function(obj){
+            var owner = this,args = Array.prototype.slice.call(arguments),callobj = Array.prototype.shift.call(args);
+            return function(e){e=e||top.window.event||window.event;owner.apply(callobj,args.concat([e]));};
+        };
+    }
+})();
+
+var glume = function(id,btnId){
+    this.ctn = document.getElementById(id);
+    this.btn = document.getElementById(btnId);
+    this.prevBtn = document.getElementById('prev');
+    this.nextBtn = document.getElementById('next');
+    this.adLis = null;
+    this.btns = null;
+    this.downBtn = null;
+    this.downOther = null;
+    this.animStep = 0.1;//动画速度0.1～0.9
+    this.switchSpeed = 5;//自动播放间隔(s)
+    this.defOpacity = 1;
+    this.tmpOpacity = 1;
+    this.crtIndex = 0;
+    this.crtLi = null;
+    this.adLength = 0;
+    this.timerAnim = null;
+    this.timerSwitch = null;
+    this.init();
+};
+glume.prototype = {
+    fnAnim:function(toIndex){
+        if(this.timerAnim){window.clearTimeout(this.timerAnim);}
+        if(this.tmpOpacity <= 0){
+            this.crtLi.style.opacity = this.tmpOpacity = this.defOpacity;
+            this.crtLi.style.filter = 'Alpha(Opacity=' + this.defOpacity*100 + ')';
+            this.crtLi.style.zIndex = 0;
+            this.crtIndex = toIndex;
+            return;
+        }
+        this.crtLi.style.opacity = this.tmpOpacity = this.tmpOpacity - this.animStep;
+        this.crtLi.style.filter = 'Alpha(Opacity=' + this.tmpOpacity*100 + ')';
+        this.timerAnim = window.setTimeout(this.fnAnim.bind(this,toIndex),50);
+    },
+   
+    fnPrevIndex:function(){
+        return (this.crtIndex <= 0)?this.adLength-1:parseInt(this.crtIndex,10)-1;
+    },
+    fnNextIndex:function(){
+        return (this.crtIndex >= this.adLength-1)?0:parseInt(this.crtIndex,10)+1;
+    },
+    fnSwitch:function(toIndex){
+        if(this.crtIndex==toIndex){return;}
+        this.crtLi = this.adLis[this.crtIndex];
+        for(var i=0;i<this.adLength;i++){
+            this.adLis[i].style.zIndex = 0;
+        }
+        this.crtLi.style.zIndex = 2;
+        this.adLis[toIndex].style.zIndex = 1;
+        this.fnAnim(toIndex);
+        this.fnSwitchNavStyle(toIndex);
+        
+    },
+    fnSwitchNavStyle: function(toIndex){
+    	var div = document.getElementById('vivian-switcher');
+		var lis = div.getElementsByTagName('li');
+		if(lis&&lis.length){
+			for(var i = 0;i<lis.length;i++){
+				lis[i].className = 'vivian-switch-item';
+			}
+			lis[toIndex].className +=' selected';
+		}
+		return null;
+    },
+    fnSwitchNavClick: function(evt){
+        var li = evt.currentTarget;
+        var toIndex = li.getAttribute('data-index');
+        this.fnSwitch(toIndex);
+    },
+    fnAutoPlay:function(){
+        this.fnSwitch(this.fnNextIndex());
+    },
+    fnPlay:function(){
+        this.timerSwitch = window.setInterval(this.fnAutoPlay.bind(this),this.switchSpeed*1000);
+    },
+    fnStopPlay:function(){
+        window.clearTimeout(this.timerSwitch);
+    },
+    fnNext:function(){
+    	this.fnSwitch(this.fnNextIndex());
+    },
+    fnPrev:function(){
+    	this.fnSwitch(this.fnPrevIndex());
+    },
+    init:function(){
+        this.adLis = this.ctn.getElementsByTagName('div');
+        this.adLength = this.adLis.length;
+        var target = document.getElementById('vivian-switcher');
+		var ul = document.createElement('ul');
+		ul.setAttribute('class','nav');
+        for(var i = 0;i<this.adLength;i++){
+			var li = document.createElement('li');
+			if(i==0){
+				li.setAttribute("class", "vivian-switch-item selected");
+			}else{
+				li.setAttribute("class", "vivian-switch-item");
+			}
+			li.setAttribute('data-index',i);
+			li.onclick = this.fnSwitchNavClick.bind(this);
+			ul.appendChild(li);
+        }
+        target.appendChild(ul);
+        target.setAttribute('style','');
+        if(this.prevBtn){
+           this.prevBtn.onclick = this.fnPrev.bind(this);
+        }
+        if(this.nextBtn){
+           this.nextBtn.onclick = this.fnNext.bind(this);
+        }
+        this.adLis[this.crtIndex].style.zIndex = 2;
+        this.fnPlay();
+        this.ctn.onmouseover = this.fnStopPlay.bind(this);
+        this.btn.onmouseover = this.fnStopPlay.bind(this);
+        document.getElementById('vivian-switcher').onmouseover = this.fnStopPlay.bind(this);
+        this.ctn.onmouseout = this.fnPlay.bind(this);
+        this.btn.onmouseout = this.fnPlay.bind(this);
+        document.getElementById('vivian-switcher').onmouseout = this.fnPlay.bind(this);
+        
+    }
+};
+var player1 = new glume('home_slide','outbtn');
+</script>
+<?php endif;?>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <Dono_Directory>
+            <version>1.0.0</version>
+        </Dono_Directory>
+    </modules>
+    <global>
+        <models>
+            <donodirectory>
+                <class>Dono_Directory_Model</class>
+            </donodirectory>
+        </models>
+        <helpers>
+            <donodirectory>
+                <class>Dono_Directory_Helper</class>
+            </donodirectory>
+        </helpers>
+        <blocks>
+            <donodirectory>
+                <class>Dono_Directory_Block</class>
+            </donodirectory>
+        </blocks>
+    </global>
+    <frontend>
+        <routers>
+           <directory>
+           		<use>standard</use>
+                <args>
+                    <modules>
+                        <Dono_Directory before="Dono_Directory">Dono_Directory</Dono_Directory>
+                    </modules>
+                    <module>Dono_Directory</module>
+                    <frontName>directory</frontName>					
+                </args>
+            </directory>
+        </routers>
+        <layout>
+            <updates>
+                <donodirectory>
+                    <file>donodirectory.xml</file>
+                </donodirectory>
+            </updates>
+        </layout>
+    </frontend>
+</config>

@@ -1,0 +1,79 @@
+<?php
+$_product = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$swatch_attributes = Mage::helper('colorselectorplus')->getSwatchAttributes();
+$title = Mage::getStoreConfig('color_selector_plus/colorselectorplusgeneral/title', Mage::app()->getStore());
+$hide = Mage::getStoreConfig('color_selector_plus/colorselectorplusgeneral/hidedropdown', Mage::app()->getStore());
+$ds = (Mage::getConfig()->getModuleConfig('CJM_CustomStockStatus')->is('active', 'true') ? Mage::getStoreConfig('custom_stock/configurableproducts/dynamics', Mage::app()->getStore()) : 0);
+?>
+
+<?php if ($_product->isSaleable() && count($_attributes)): ?>
+    <dl>
+    	<?php foreach($_attributes as $_attribute): ?>
+			<?php $_productAttribute = $_attribute->getProductAttribute(); ?>
+			
+			<?php if(in_array($_productAttribute->getAttributeCode(), $swatch_attributes)): ?>
+				<?php $attributeId = $_attribute->getAttributeId(); ?>
+       			<dt>
+       				<label class="required"><?php echo $_attribute->getLabel() ?></label>
+       				<?php if ($hide == 1){?><label id="divattribute<?php echo $attributeId ?>" class="swatchLabel"> - <?php echo $title ?></label><?php }?>
+       			</dt>
+       			<dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+                	<div class="input-box">
+                	<select name="super_attribute[<?php echo $attributeId ?>]" id="attribute<?php echo $attributeId ?>"class="required-entry super-attribute-select<?php if($hide == 1) echo ' swatchSelect' ?>">
+                   		<option><?php echo $this->__('Choose an Option...') ?></option>
+               		</select>
+               		</div>
+					<?php echo Mage::helper('colorselectorplus')->getSwatchHtml($_productAttribute->getAttributeCode(), $attributeId, $_product); ?>
+              	</dd>
+              	<div class="clearfix"></div>
+     		<?php else: ?>
+        		<dt><label class="required"><?php echo $_attribute->getLabel() ?></label></dt>
+        		<dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+            		<div class="input-box vivian-box">
+                		<select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                    		<option><?php echo $this->__('Choose an Option...') ?></option>
+                  		</select>
+					    <ul class="v-ul clearfix">
+					    	<?php foreach($_attribute->getPrices() as $_price):?>
+        							<li class="vivian-attr-opt <?php echo 'v-o-'.strtolower($_price['label']);?>" data-value="<?php echo $_price['value_index'] ?>">
+					        			<a>
+					        				<span><?php echo($_price['label']) ?></span>
+					        			</a>
+					        			<i></i>
+					        		</li>
+        					<?php endforeach;?>
+					    		
+					    </ul>
+              		</div></dd>
+   			<?php endif; ?>
+    	
+    	<?php endforeach; ?>
+    	
+    </dl>
+    
+	<script type="text/javascript">
+		
+		var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+		
+		var dynamicStatus = '<?php echo $ds ?>',
+			selecttitle = '<?php echo $title ?>';
+			(function($){
+				$().ready(function(){
+					return;
+					$('.vivian-box .v-ul li').click(function(){
+						$(this).siblings('li').removeClass('selected');
+						var $select = $(this).addClass('selected').parent('ul').siblings('select');
+						var $option = $select.find('option[value="'+$(this).attr('data-value')+'"]');
+						if($option.length){
+							$select.attr('disabled',false);
+							$option.attr('selected',true);
+						}else{
+							$select.find('option:eq(0)').attr('selected',true);
+						}
+						$select.trigger('change');
+					});
+				});
+			})(jQuery);
+    </script>
+<?php endif;

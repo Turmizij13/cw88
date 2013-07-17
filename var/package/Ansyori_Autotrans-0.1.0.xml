@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Ansyori_Autotrans</name>
+    <version>0.1.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v.3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Replace Store Language Switcher</summary>
+    <description>Replace Store Language Switcher  with google translate page</description>
+    <notes>First Stable</notes>
+    <authors><author><name>Ansyori</name><user>ansyori</user><email>ansyori@gmail.com</email></author></authors>
+    <date>2013-04-15</date>
+    <time>04:35:54</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="Ansyori_Autotrans.xml" hash="58f21a676874394522c28b270a0dde26"/></dir></target><target name="magelocal"><dir name="Ansyori"><dir name="Autotrans"><dir name="Block"><file name="Index.php" hash="74ffa0f7c8311fb69a0c6083de99139f"/></dir><dir name="Helper"><file name="Data.php" hash="5c2981e82e1098575ebad2df66712f2e"/></dir><dir name="controllers"><file name="IndexController.php" hash="2e8528334a96da6f17470a301c8df5ff"/></dir><dir name="etc"><file name="adminhtml.xml" hash="9b82c05359448c94ce726fd0a230dbe4"/><file name="config.xml" hash="ccc8b03d8cbfaa823ae906794278e23f"/><file name="system.xml" hash="543e66fb5a32cf24e300ef16339248a1"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="autotrans.xml" hash="2b3b903b46eb7afc4b4bc31078392b98"/></dir><dir name="template"><dir name="autotrans"><file name="index.phtml" hash="a04b8fdbbdc14993ec479c52621925b4"/><file name="meta.phtml" hash="1de1436c5b116700b36da793b9e8da58"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php><package><name>Mage_Core_Modules</name><channel>community</channel><min>1.6.0.0</min><max>1.7.0.2</max></package></required></dependencies>
+</package>

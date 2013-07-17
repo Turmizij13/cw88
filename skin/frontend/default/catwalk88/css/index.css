@@ -1,0 +1,69 @@
+/* slide */
+.slide {
+	max-width: 1920px;
+	height: 600px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	min-width: 1002px;
+}
+
+.slide-cnt {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: hidden;
+	z-index: 2;
+	left: 0;
+	top: 0;
+}
+
+.slide-cnt .slide-list {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.slide-cnt .slide-list li {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.slide-cnt .slide-list li a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	cursor: pointer;
+}
+
+.slide-cnt .slide-list li a:hover {
+	text-decoration: none;
+}
+
+.slide-cnt .slide-page {
+	position: absolute;
+	z-index: 10;
+	left: 50%;
+	bottom: 30px;
+	margin-left: -52px;
+}
+
+.slide-cnt .slide-page span {
+	display: block;
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	overflow: hidden;
+	text-indent: -30000px;
+	background:
+		url(../images/slider-sprites.png)
+		-30px 0 no-repeat;
+	font-style: normal;
+	cursor: pointer;
+}
+
+.slide-cnt .slide-page span.on {
+	background-position: 0 0;
+	color: #fff;
+}

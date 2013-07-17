@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Light_Checkout>
+            <version>1.6.0.0</version>
+        </Light_Checkout>
+	</modules>
+	<global>
+		<models>
+            <ltcheckout>
+                <class>Light_Checkout_Model</class>
+            </ltcheckout>
+        </models>
+		<events>
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <ltcheckout>
+                        <class>ltcheckout/observer</class>
+                        <method>processAddToCart</method>
+                    </ltcheckout>
+                </observers>
+            </checkout_cart_add_product_complete>
+        </events>
+	</global>
+</config>

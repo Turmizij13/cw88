@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Light_Newsletter>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Light_Newsletter>
+		<Light_Checkout>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Light_Checkout>
+	</modules>
+</config>

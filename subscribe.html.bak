@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="js/jquery/skins/aero.css" rel="stylesheet">
+<style type="text/css" charset="utf-8">
+#main{			
+background:url('media/wysiwyg/banner_image/landingpage.jpeg') repeat scroll center top;			
+height:100%;			
+width:100%;			
+position:relative;
+overflow:hidden;	
+}
+#main_img{
+	display:block;
+	margin:auto;
+	border:none;
+}
+</style>
+<script src="js/jquery/jquery.js" type="text/javascript" language="javascript"></script>
+<script src="js/jquery/jquery.artDialog.js" type="text/javascript" language="javascript"></script>
+<script>
+function onSubscribe($this){
+	var dialog = $.dialog({
+		title: 'Subscription',
+		content: '<label for="subscribe-email">Newsletter: </label><input type="text" name="email" id="subscribe-email">',
+		ok: function(){
+			$.ajax({
+				url:'mynewsletter/subscriber/newIframe',
+				type:'POST',
+				data:{email:$('#subscribe-email').val(),'geoip':0},
+				dataType:'json',
+				width:200,
+				height:150,
+				okVal:'Subscribe',
+				success:function(rsp){
+					dialog.close();
+					var $icon = 'succeed';
+					if(!rsp.success){
+						$icon = 'error';
+					}
+					$.dialog({
+						title:'Message',
+						content:rsp.msg,
+						icon:$icon,
+						ok:function(){
+							return true;
+						}
+					});
+				},
+				error:function(){
+					dialog.close();
+					$.dialog({
+						title:'Message',
+						content:'Subscribe failed',
+						icon:'error',
+						ok:function(){
+							return true;
+						}
+					});
+				}
+			});
+			return false;
+		}
+	});
+}
+</script>
+</head>
+<body>
+<div id="main">
+	<img src="media/wysiwyg/banner_image/landingpage.jpeg" id="main_img" usemap="#targetMap"/>
+	<map name="targetMap">
+		<area  shape="rect" coords="670,482,777,502" href="javascript:void(0)" onclick="onSubscribe(this)" target="_self" title="Click here to subscribe!">
+	</map>
+</div>
+</body>
+</html> 
